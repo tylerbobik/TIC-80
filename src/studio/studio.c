@@ -421,9 +421,9 @@ char getKeyboardText(Studio* studio)
         static const char Shift[] =     " ABCDEFGHIJKLMNOPQRSTUVWXYZ=!\" $%&/()??^*CN\"a;:_> ";
         static const char Alt[] =       "                            |@#        []} {\\     ";
 #else
-        static const char Symbols[] =   " abcdefghijklmnopqrstuvwxyz0123456789-=[]\\;'`,./ ";
-        static const char Shift[] =     " ABCDEFGHIJKLMNOPQRSTUVWXYZ)!@#$%^&*(_+{}|:\"~<>? ";
-        static const char Alt[] =       "                                                  ";
+        static const char Symbols[] =   " abcdefghijklmnopqrstuvwxyz0123456789-=[]\\;'`,./  ";
+        static const char Shift[] =     " ABCDEFGHIJKLMNOPQRSTUVWXYZ)!@#$%^&*(_+{}|:\"~<>?  ";
+        static const char Alt[] =       "                                                   ";
 #endif
 
         enum{Count = sizeof Symbols};

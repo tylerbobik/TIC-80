@@ -16,6 +16,7 @@
 //
 #include "kernel.h"
 #include "customscreen.h"
+#include "gpio.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -50,6 +51,8 @@ static unsigned mousebuttons;
 static struct TGamePadState gamepad;
 
 static CSpinLock keyspinlock;
+
+static bool LEDOn = false;
 
 extern "C" {
 
@@ -239,6 +242,15 @@ void inputToTic()
     {
         if (keyboardRawKeys[i] != 0)
         {
+            if (LEDOn) {
+                // GPIOOff();
+                // LEDOn = false;
+            } else {
+                initGPIO();
+                GPIOOn();
+                LEDOn = true;
+            }
+            // GPIOOn();
             // keyboard
             if(keynum<TIC80_KEY_BUFFER){
                 tic_keycode tkc = TicKeyboardCodes[keyboardRawKeys[i]];
@@ -307,8 +319,8 @@ void inputToTic()
 
        dbg("\n");
 */
-
 }
+
 void KeyStatusHandlerRaw (unsigned char ucModifiers, const unsigned char RawKeys[6])
 {
     // this gets called with whatever key is currently pressed in RawKeys

@@ -11,15 +11,14 @@
 #include <cerrno>
 #include <unistd.h>
 
-#ifdef EN_DEBUG
+// #ifdef EN_DEBUG
  #define dbg(...) printf(__VA_ARGS__)
-#else
- #define dbg(...)
-#endif
+// #else
+//  #define dbg(...)
+// #endif
 
 
 void* loadFile(const char *filename, u32* size);
 char *strdup (const char *s);
 
 #endif
-

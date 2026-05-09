@@ -139,7 +139,7 @@ typedef struct
             s8 ry;
         };
     };
-    
+
     union
     {
         struct
@@ -157,6 +157,20 @@ typedef struct
         u16 btns;
     };
 } tic80_mouse;
+
+typedef enum {
+    tic_pin_up,
+    tic_pin_down
+} tic_pin_type;
+
+typedef union {
+    tic_pin_type pin_type;
+    bool state;
+} tic80_gpio_pin;
+
+typedef union {
+    tic80_gpio_pin pins[28];
+} tic80_gpio;
 
 typedef u8 tic_key;
 
@@ -181,6 +195,9 @@ typedef struct
     tic80_gamepads gamepads;
     tic80_mouse mouse;
     tic80_keyboard keyboard;
+#ifdef BAREMETALPI
+    tic80_gpio gpio;
+#endif
 
 } tic80_input;
 

@@ -26,11 +26,11 @@
 #include "ext/json.h"
 
 #if defined(BAREMETALPI) || defined(_3DS)
-  #ifdef EN_DEBUG
+//   #ifdef EN_DEBUG
     #define dbg(...) printf(__VA_ARGS__)
-  #else
-    #define dbg(...)
-  #endif
+//   #else
+//     #define dbg(...)
+//   #endif
 #endif
 
 #if defined(BAREMETALPI)
@@ -712,8 +712,9 @@ bool tic_fs_exists(tic_fs* fs, const char* name)
 
 u64 fs_date(const char* path)
 {
+    return 0;
 #if defined(BAREMETALPI)
-    dbg("fs_date %s\n", path);
+    // dbg("fs_date %s\n", path);
     // TODO BAREMETALPI
     return 0;
 #else

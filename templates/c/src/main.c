@@ -20,31 +20,37 @@ void BOOT() {
     y = 24;
 }
 
+void simple_palyer_anim_controller() {
+
+}
+
 WASM_EXPORT("TIC")
 void TIC() {
-    cls(13);
+    cls(0);
 
     // The standard demo.
+    int rightIndex = 0;
     if (btn(0) > 0) { y--; }
     if (btn(1) > 0) { y++; }
     if (btn(2) > 0) { x--; }
-    if (btn(3) > 0) { x++; }
+    if (btn(3) > 0) { x++; rightIndex = 1;}
 
-    spr(1+t%60/30*2, x, y, &transcolors, 1, 3, 0, 0, 2, 2);
-    print(m, 60, 84, 15, 1, 1, 0);
+    spr(0, x, y, &transcolors, 1, 1, 0, 0, 1, 2);
+    spr(rightIndex, x+8, y, &transcolors, 1, 1, 1, 0, 1, 2);
+    // print("poopy butthole", 60, 84, 15, 1, 1, 0);
     t++;
 
     // Mouse example demonstrating use of libc function.
-    mouse(&md);
-    if (md.left) { r = r + 2; }
-    r--;
-    r = max(0, min(32, r));
-    line(md.x, 0, md.x, 136, 11);
-    line(0, md.y, 240, md.y, 11);
-    circ(md.x, md.y, r, 11);
+    // mouse(&md);
+    // if (md.left) { r = r + 2; }
+    // r--;
+    // r = max(0, min(32, r));
+    // line(md.x, 0, md.x, 136, 11);
+    // line(0, md.y, 240, md.y, 11);
+    // circ(md.x, md.y, r, 11);
 
     const int BUFSIZ = 10;
     char buf[BUFSIZ];
     snprintf(buf, BUFSIZ, "(%03d,%03d)", md.x, md.y);
-    print(buf, 3, 3, 15, 0, 1, 1);
+    // print(buf, 3, 3, 15, 0, 1, 1);
 }
